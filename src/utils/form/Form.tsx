@@ -1,24 +1,15 @@
-export function Form({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <form className="form">{children}</form>
-    </>
-  );
-}
+import type { FormSearchProps } from "@/types/interface";
+import { Component, type ReactElement } from "react";
 
-export function FormSearch({
-  input,
-  button,
-}: {
-  input: React.ReactNode;
-  button: React.ReactNode;
-}) {
-  return (
-    <>
-      <form className="form">
-        {input}
-        {button}
-      </form>
-    </>
-  );
+export default class FormSearch extends Component<FormSearchProps> {
+  render(): ReactElement {
+    return (
+      <>
+        <form className="form">
+          {this.props.input}
+          {this.props.button}
+        </form>
+      </>
+    );
+  }
 }

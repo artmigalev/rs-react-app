@@ -1,11 +1,14 @@
-import type { ButtonProps } from "../../types/types";
+import type { ButtonProps } from "@/types/types";
+import { Component, type ReactNode } from "react";
 
-export default function Button(props: ButtonProps) {
-  return (
-    <>
-      <button className={props.className} type={"button"}>
-        {props.name}
-      </button>
-    </>
-  );
+export class Button extends Component<ButtonProps> {
+  render(): ReactNode {
+    return (
+      <>
+        <button className={this.props.className} type={"button"}>
+          {this.props.name}
+        </button>
+      </>
+    );
+  }
 }
