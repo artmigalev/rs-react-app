@@ -8,7 +8,7 @@ import FormSearch from "@utils/form/Form";
 export default class SearchContainer extends Component {
   render(): ReactNode {
     const btnProps: ButtonProps = {
-      name: "Submit",
+      name: "Search",
       className: "form-submit-btn",
       type: "submit",
     };
