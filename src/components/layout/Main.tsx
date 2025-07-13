@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 import getAnimal from "@/api/animal/getAnimal";
 import type { components } from "@/types/stapi";
 
-export default class Main extends Component<components["schemas"]["AnimalFull"] | null> {
+export default class Main extends Component {
   state: { data: components["schemas"]["AnimalFull"] | null } = { data: null };
   cards: ReactNode[] | [] = [];
 
