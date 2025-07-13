@@ -13,18 +13,8 @@
   --c: 7px;
   background-color: #000;
   background-image:
-    radial-gradient(
-      circle at 50% 50%,
-      #0000 1.5px,
-      #000 0 var(--c),
-      #0000 var(--c)
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      #0000 1.5px,
-      #000 0 var(--c),
-      #0000 var(--c)
-    ),
+    radial-gradient(circle at 50% 50%, #0000 1.5px, #000 0 var(--c), #0000 var(--c)),
+    radial-gradient(circle at 50% 50%, #0000 1.5px, #000 0 var(--c), #0000 var(--c)),
     radial-gradient(circle at 50% 50%, #f00, #f000 60%),
     radial-gradient(circle at 50% 50%, #ff0, #ff00 60%),
     radial-gradient(circle at 50% 50%, #0f0, #0f00 60%),
@@ -42,9 +32,9 @@
     0% 0%,
     0% 0%,
     0% 0px;
-  /* animation:
+  animation:
     wee 40s linear infinite,
-    filt 6s linear infinite; */
+    filt 6s linear infinite;
 }
 
 @keyframes filt {
