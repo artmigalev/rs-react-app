@@ -11,6 +11,9 @@ export default class SearchContainer extends Component {
       name: "Search",
       className: "form-submit-btn",
       type: "submit",
+      clbck: (e) => {
+        e.preventDefault();
+      },
     };
 
     return (

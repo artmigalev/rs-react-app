@@ -17,12 +17,7 @@ export default class Input extends Component {
   render(): ReactNode {
     return (
       <>
-        <input
-          type="text"
-          required={true}
-          value={this.state.value}
-          onChange={(e) => this.handleChange(e)}
-        />
+        <input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
       </>
     );
   }
