@@ -1,24 +1,24 @@
 import { Button } from "@/utils/button/Button";
 import { render, screen } from "@testing-library/react";
-import { propsButton } from "./SearchContainer.test";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import type { ButtonProps } from "@/types/types";
+import { vi } from "vitest";
 
 describe("Button", () => {
   const props: ButtonProps = {
     name: "Search",
     className: "classname",
-    type: "button",
+    type: "submit",
+    clbck: () => {},
   };
   it("should props must be", () => {
     expect(props).toBeInstanceOf(Object);
-    expect(props).toHaveProperty("type", "button");
+    expect(props).toHaveProperty("type", "submit");
   });
   it("should button to be in document", () => {
     render(<Button {...props} />);
 
-    // screen.debug()
     const button = screen.getByRole("button", { name: "Search" });
     const text = screen.getByText(/search/i);
 
@@ -28,20 +28,27 @@ describe("Button", () => {
   it("should button have attributes", () => {
     render(<Button {...props} />);
     const button = screen.getByRole("button", { name: "Search" });
-    console.log(button);
 
-    expect(button).toHaveAttribute("type", "button");
+    expect(button).toHaveAttribute("type", "submit");
     expect(button).not.toHaveAttribute("disabled");
     expect(button).toHaveClass("classname");
   });
 
-  it("button", async () => {
-    render(<Button {...propsButton} />);
+  it("should be click button", async () => {
+    const MockOnClick = vi.fn();
+    const props: ButtonProps = {
+      name: "Search",
+      className: "classname",
+      type: "submit",
+      clbck: MockOnClick,
+    };
+
+    render(
+      <Button className={props.className} type={props.type} name={props.name} clbck={props.clbck} />
+    );
+    screen.debug();
     const user = userEvent.setup();
-    await user.click(screen.getByText(/name-button/i));
-
-    const button: HTMLElement = screen.getByText(/name-button/i);
-
-    expect(button.textContent).toBe("name-button");
+    await user.click(screen.getByRole("button", { name: /search/i }));
+    expect(MockOnClick).toHaveBeenCalled();
   });
 });
