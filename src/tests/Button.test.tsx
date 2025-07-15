@@ -3,14 +3,38 @@ import { render, screen } from "@testing-library/react";
 import { propsButton } from "./SearchContainer.test";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
-describe("Button", () => {
-  it("button click", () => {
-    const btn = render(<Button {...propsButton} />);
+import type { ButtonProps } from "@/types/types";
 
-    expect(propsButton).toBeInstanceOf(Object);
-    expect(propsButton).toHaveProperty("type", "submit");
-    expect(btn.getByRole("button"));
+describe("Button", () => {
+  const props: ButtonProps = {
+    name: "Search",
+    className: "classname",
+    type: "button",
+  };
+  it("should props must be", () => {
+    expect(props).toBeInstanceOf(Object);
+    expect(props).toHaveProperty("type", "button");
   });
+  it("should button to be in document", () => {
+    render(<Button {...props} />);
+
+    // screen.debug()
+    const button = screen.getByRole("button", { name: "Search" });
+    const text = screen.getByText(/search/i);
+
+    expect(button).toBeInTheDocument();
+    expect(text).toBeInTheDocument();
+  });
+  it("should button have attributes", () => {
+    render(<Button {...props} />);
+    const button = screen.getByRole("button", { name: "Search" });
+    console.log(button);
+
+    expect(button).toHaveAttribute("type", "button");
+    expect(button).not.toHaveAttribute("disabled");
+    expect(button).toHaveClass("classname");
+  });
+
   it("button", async () => {
     render(<Button {...propsButton} />);
     const user = userEvent.setup();
