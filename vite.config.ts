@@ -11,9 +11,12 @@ export default defineConfig({
     removeConsole({ custom: ["console.log()", "console.warn()", "debugger"] }),
   ],
   test: {
+    root: "./",
+    dir: "./src/tests/",
+
     globals: true,
     environment: "jsdom",
-    setupFiles: "./src/setup-tests.ts",
+    setupFiles: "./setup-tests.ts",
     exclude: [...configDefaults.exclude],
     passWithNoTests: true,
     coverage: {
@@ -28,8 +31,6 @@ export default defineConfig({
       },
     },
     watch: true,
-    root: "./src/",
-    dir: "./src/tests/",
     clearMocks: true,
     mockReset: true,
   },
