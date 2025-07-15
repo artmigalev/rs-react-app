@@ -31,6 +31,7 @@ export default tseslint.config(
       ...react.configs.recommended.rules,
       ...react.configs["jsx-runtime"].rules,
       "unused-imports/no-unused-imports": "error",
+      "no-console": "error",
     },
     settings: {
       react: {
