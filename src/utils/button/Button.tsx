@@ -5,7 +5,7 @@ export class Button extends Component<ButtonProps> {
   render(): ReactNode {
     return (
       <>
-        <button className={this.props.className} type={"button"}>
+        <button className={this.props.className} onClick={() => {}} type={"button"}>
           {this.props.name}
         </button>
       </>

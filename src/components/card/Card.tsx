@@ -4,7 +4,6 @@ import styles from "./Card.module.scss";
 
 export class Card extends Component<components["schemas"]["AnimalFull"]> {
   render() {
-    console.log("render");
     return (
       <>
         <div className={styles.card}>

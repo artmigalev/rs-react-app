@@ -1,11 +1,15 @@
 import Header from "@/components/layout/Header";
-import { render, type RenderResult } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
-test("render header", () => {
-  const container = document.createElement("div");
+describe("Header", () => {
+  render(<Header />);
+  it("should be render header", () => {
+    const header = screen.getByRole("banner");
+    const buttonSearch = screen.getByRole("button");
+    const input = screen.getByRole("textbox");
 
-  const header: RenderResult = render(<Header />, {
-    baseElement: container,
+    expect(header).toBeInTheDocument();
+    expect(buttonSearch).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
   });
-  expect(header).toBeDefined();
 });
