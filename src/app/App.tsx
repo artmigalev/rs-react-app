@@ -1,16 +1,27 @@
+import Header from "@/components/layout/Header";
 import Main from "@/components/layout/Main";
 import Footer from "@/components/layout/Footer";
 import "./App.css";
-import Header from "@/components/layout/Header";
+import React, { Component } from "react";
+import { SearchValueContext } from "@/context/SearchContext";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
-  );
+class App extends Component {
+  state: Readonly<{ searchValue: string; setValue: (searchValue: string) => void }> = {
+    searchValue: "",
+    setValue: (value: string) => this.setState(value),
+  };
+
+  render(): React.ReactNode {
+    return (
+      <>
+        <SearchValueContext.Provider value={this.state}>
+          <Header />
+          <Main />
+          <Footer />
+        </SearchValueContext.Provider>
+      </>
+    );
+  }
 }
 
 export default App;
