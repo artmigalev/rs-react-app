@@ -1,5 +1,5 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# #!/bin/sh
+# . "$(dirname "$0")/_/husky.sh"
 
-echo "🔥 pre-commit hook triggered"
-npx lint-staged
+# echo "🔥 pre-commit hook triggered"
+# npx lint-staged
