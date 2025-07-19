@@ -10,4 +10,5 @@ export interface ContainerCardsState {
   loading: boolean;
   characters: components["schemas"]["CharacterBaseResponse"]["characters"] | [];
   value: string | "";
+  pageNumber: number;
 }
