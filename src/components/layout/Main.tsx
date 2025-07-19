@@ -1,28 +1,18 @@
 import { Component, type ReactNode } from "react";
-import { Card } from "../card/Card";
-import styles from "./index.module.scss";
-import getAnimal from "@/api/animal/getAnimal";
 import type { components } from "@/types/stapi";
+import ContainerCards from "../container/ContainerCards";
+import styles from "./index.module.scss";
 
 export default class Main extends Component {
   state: { data: components["schemas"]["AnimalFull"] | null } = { data: null };
   cards: ReactNode[] | [] = [];
 
-  setCard() {
-    getAnimal().then((response) => {
-      this.setState({ data: response.animals[0] });
-    });
-
-    return;
-  }
-  componentDidMount(): void {
-    this.setCard();
-  }
+  componentDidMount(): void {}
   render(): ReactNode {
     return (
-      <>
-        <div className={styles.main}>{this.state.data && <Card {...this.state.data} />}</div>
-      </>
+      <div className={styles["main"]}>
+        <ContainerCards />
+      </div>
     );
   }
 }

@@ -16,8 +16,7 @@ export default class ContainerCards extends Component<ContainerCardsState> {
   };
 
   render(): ReactNode {
-    if (this.state) return <Loader />;
-    console.log(this.state);
+    if (this.state.loading) return <Loader />;
 
     return <div className={styles.container}></div>;
   }

@@ -6,15 +6,21 @@ import React, { Component } from "react";
 import { SearchValueContext } from "@/context/SearchContext";
 
 class App extends Component {
-  state: Readonly<{ searchValue: string; setSearchValue: (searchValue: string) => void }> = {
-    searchValue: "",
-    setSearchValue: (value: string) => this.setState(value),
+  state = {
+    searchValue: localStorage.getItem("searchText") || "",
   };
-
+  setSearchValue = (value: string) => {
+    this.setState({ searchValue: value });
+  };
   render(): React.ReactNode {
     return (
       <>
-        <SearchValueContext.Provider value={this.state}>
+        <SearchValueContext.Provider
+          value={{
+            searchValue: this.state.searchValue,
+            setSearchValue: this.setSearchValue,
+          }}
+        >
           <Header />
           <Main />
           <Footer />
