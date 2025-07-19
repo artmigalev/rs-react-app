@@ -5,7 +5,10 @@ import styles from "./ContainerCards.module.scss";
 import React from "react";
 import { SearchValueContext, type ContextSearchValue } from "@/context/SearchContext";
 
-export default class ContainerCards extends Component<ContainerCardsState> {
+export default class ContainerCards extends Component<
+  Record<string, unknown>,
+  ContainerCardsState
+> {
   static contextType: Context<ContextSearchValue> = SearchValueContext;
 
   declare context: React.ContextType<typeof SearchValueContext>;
