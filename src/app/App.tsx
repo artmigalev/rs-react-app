@@ -6,9 +6,9 @@ import React, { Component } from "react";
 import { SearchValueContext } from "@/context/SearchContext";
 
 class App extends Component {
-  state: Readonly<{ searchValue: string; setValue: (searchValue: string) => void }> = {
+  state: Readonly<{ searchValue: string; setSearchValue: (searchValue: string) => void }> = {
     searchValue: "",
-    setValue: (value: string) => this.setState(value),
+    setSearchValue: (value: string) => this.setState(value),
   };
 
   render(): React.ReactNode {
