@@ -2,7 +2,7 @@ import type { components } from "@/types/stapi";
 import { Component } from "react";
 import styles from "./Card.module.scss";
 
-type CharacterProps = Pick<
+export type CharacterProps = Pick<
   components["schemas"]["CharacterFull"],
   | "name"
   | "hologramActivationDate"
@@ -19,8 +19,6 @@ type CharacterProps = Pick<
 
 export class Card extends Component<CharacterProps> {
   render() {
-    console.log(this.props);
-
     const {
       name,
       hologramActivationDate,
