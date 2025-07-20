@@ -1,9 +1,9 @@
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 import type { components } from "./stapi";
 
 export interface FormSearchProps {
-  input: ReactElement;
-  button: ReactElement;
+  input: ReactNode;
+  button: ReactNode;
 }
 
 export interface ContainerCardsState {
@@ -11,4 +11,5 @@ export interface ContainerCardsState {
   characters: components["schemas"]["CharacterBaseResponse"]["characters"] | [];
   value: string | "";
   pageNumber: number;
+  loadMore?: () => void;
 }

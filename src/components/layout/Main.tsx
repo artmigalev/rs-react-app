@@ -3,7 +3,9 @@ import type { components } from "@/types/stapi";
 import ContainerCards from "../container/ContainerCards";
 import styles from "./index.module.scss";
 
-export default class Main extends Component {
+export default class Main extends Component<{
+  containerRef: React.RefObject<ContainerCards | null>;
+}> {
   state: { data: components["schemas"]["AnimalFull"] | null } = { data: null };
   cards: ReactNode[] | [] = [];
 
@@ -11,7 +13,7 @@ export default class Main extends Component {
   render(): ReactNode {
     return (
       <div className={styles["main"]}>
-        <ContainerCards />
+        <ContainerCards ref={this.props.containerRef} />
       </div>
     );
   }
