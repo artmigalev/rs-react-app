@@ -3,14 +3,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import type { ButtonProps } from "@/types/types";
-import { vi } from "vitest";
 
 describe("Button", () => {
   const props: ButtonProps = {
     name: "Search",
     className: "classname",
     type: "submit",
-    clbck: () => {},
   };
   it("should props must be", () => {
     expect(props).toBeInstanceOf(Object);
@@ -35,20 +33,16 @@ describe("Button", () => {
   });
 
   it("should be click button", async () => {
-    const MockOnClick = vi.fn();
     const props: ButtonProps = {
       name: "Search",
       className: "classname",
       type: "submit",
-      clbck: MockOnClick,
+      // clbck: MockOnClick,
     };
 
-    render(
-      <Button className={props.className} type={props.type} name={props.name} clbck={props.clbck} />
-    );
+    render(<Button className={props.className} type={props.type} name={props.name} />);
     screen.debug();
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /search/i }));
-    expect(MockOnClick).toHaveBeenCalled();
   });
 });

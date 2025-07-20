@@ -31,12 +31,12 @@ export default class ContainerCards extends Component<
   }
 
   async componentDidUpdate(
-    prevProps: Readonly<Record<string, unknown>>,
+    _: Readonly<Record<string, unknown>>,
     prevState: Readonly<ContainerCardsState>
   ) {
     const { searchValue } = this.context;
 
-    if (searchValue !== this.state.value) {
+    if (searchValue !== prevState.value) {
       this.setState(
         {
           value: searchValue ?? "",
@@ -44,14 +44,16 @@ export default class ContainerCards extends Component<
           characters: [],
           loading: true,
         },
-        async () => {
-          await this.getData();
-          this.setState({ loading: false });
+        () => {
+          this.getData().then(() => {
+            this.setState({ loading: false });
+          });
         }
       );
+      return;
     }
 
-    if (this.state.pageNumber !== prevState.pageNumber && searchValue === this.state.value) {
+    if (this.state.pageNumber !== prevState.pageNumber) {
       await this.getData();
     }
   }
@@ -66,9 +68,9 @@ export default class ContainerCards extends Component<
       }));
     } catch (error) {
       if (error instanceof Error) {
-        console.error("Fetch error:", error.message);
+        throw new Error(`Fetch error: ${error.message}`);
       } else {
-        console.error("Unknown fetch error");
+        throw new Error("Unknown fetch error");
       }
     }
   }

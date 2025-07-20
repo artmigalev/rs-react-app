@@ -6,7 +6,6 @@ export const propsButton: ButtonProps = {
   name: "name-button",
   className: "btn-class-name",
   type: "submit",
-  clbck: () => {},
 };
 test("render SearchContainer", () => {
   const form = document.createElement("form");
