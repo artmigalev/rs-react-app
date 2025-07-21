@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   test: {
     root: "./",
-    dir: "./src/tests/",
+    dir: "./src/test-utils/",
 
     globals: true,
     environment: "jsdom",
