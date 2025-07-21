@@ -37,7 +37,6 @@ describe("Button", () => {
       name: "Search",
       className: "classname",
       type: "submit",
-      // clbck: MockOnClick,
     };
 
     render(<Button className={props.className} type={props.type} name={props.name} />);
