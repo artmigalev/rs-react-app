@@ -1,10 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔥 pre-commit hook triggered"
-echo "echo 'Running pre-commit hooks...'" >> .husky/pre-commit
-npx run lint-staged --verbose && echo
-echo 'Running pre-commit hooks...'
-echo "✅ Hooks completed!"echo 'Running pre-commit hooks...'
-echo 'Running pre-commit hooks...'
-echo 'Running pre-commit hooks...'
+echo "🚀 Starting pre-commit hook..."
+
+# Запуск lint-staged с подробным выводом
+npx lint-staged --verbose || {
+  echo "❌ lint-staged failed! Please fix the errors and try again."
+  exit 1
+}
+
+echo "✅ pre-commit hook completed successfully!"
