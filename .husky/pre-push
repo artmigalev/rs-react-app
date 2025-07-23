@@ -2,5 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "🔥 pre-commit hook triggered"
-npx lint-staged
-npm run test
+
+npm test -- --logConsole
+npm test -- --watch
+echo "✅ Hooks completed!"

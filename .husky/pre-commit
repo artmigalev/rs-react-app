@@ -5,4 +5,4 @@ echo "🔥 pre-commit hook triggered"
 echo "echo 'Running pre-commit hooks...'" >> .husky/pre-commit
 npx run lint-staged --verbose && echo
 echo 'Running pre-commit hooks...'
-echo "✅ Hooks completed!"
+echo "✅ Hooks completed!"echo 'Running pre-commit hooks...'
