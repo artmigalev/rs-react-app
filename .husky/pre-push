@@ -1,8 +1,13 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔥 pre-commit hook triggered"
+echo "🚀 Starting pre-commit checks..."
 
-npm test -- --logConsole
-npm test -- --watch
-echo "✅ Hooks completed!"
+# Запуск тестов с правильными параметрами
+echo "Running tests..."
+npm test -- --watchAll=false || {
+  echo "❌ Tests failed! Please fix the test errors before committing."
+  exit 1
+}
+
+echo "✅ All pre-commit checks passed successfully!"
