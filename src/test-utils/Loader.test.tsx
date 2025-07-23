@@ -6,9 +6,9 @@ describe("Loader", () => {
     render(<Loader />);
     const text = screen.getByText(/loading.../i);
     screen.debug();
-    const textLength = text.innerText;
+    const textLength = text.innerHTML;
 
     expect(text).toBeInTheDocument();
-    expect(textLength).toHaveLength(10);
+    expect(textLength).toBe("Loading...");
   });
 });

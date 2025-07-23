@@ -1,4 +1,4 @@
-import Header from "@/components/layout/Header";
+import { Header } from "@/components/layout/Header";
 import { render, screen } from "@testing-library/react";
 
 describe("Header", () => {
