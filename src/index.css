@@ -4,10 +4,10 @@ html {
 }
 
 body {
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 40px;
   position: absolute;
   display: flex;
   flex-direction: column;

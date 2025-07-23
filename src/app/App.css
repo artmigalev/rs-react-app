@@ -1,3 +1,9 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 @keyframes filt {
   0% {
     filter: hue-rotate(0deg);
