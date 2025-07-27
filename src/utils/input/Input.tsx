@@ -12,7 +12,7 @@ export const Input = (): React.JSX.Element => {
   };
   return (
     <>
-      <input type="text" value={searchValue ?? ""} onChange={(e) => handleChange(e)} />
+      <input autoFocus type="text" value={searchValue ?? ""} onChange={(e) => handleChange(e)} />
     </>
   );
 };
