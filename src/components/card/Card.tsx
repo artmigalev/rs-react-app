@@ -2,8 +2,6 @@ import type { components } from "@/types/stapi";
 import styles from "./Card.module.scss";
 
 const Card = (props: components["schemas"]["SoundtrackBase"]) => {
-  // const dateRelease = new Date(props.releaseDate).toDateString()
-
   return (
     <div className={styles["card-bgblue"]}>
       <div key={props.uid} className={styles["card"]}>

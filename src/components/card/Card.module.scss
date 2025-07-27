@@ -1,48 +1,49 @@
-/* From Uiverse.io by Brian-Pob */
-.card {
-  --border-radius: 1.25rem;
-  --border-width: 0.5rem;
-
-  position: relative;
-
-  // max-width: 30rem;
+.card-bgblue {
   width: 100%;
-  height: 100%;
-  border-radius: var(--border-radius);
-  padding: 1rem;
-
-  background: rgb(5, 6, 45);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  .name {
-    text-align: center;
+  background: linear-gradient(135deg, #fffffff5, #3a4b8a, #ffffff98);
+  padding: 1px;
+  border-radius: 1.2rem;
+  box-shadow: 0px 1rem 1.5rem -0.9rem #000000e1;
+  .card {
+    position: relative;
+    font-size: 1.5rem;
     width: 100%;
-  }
-  .list {
+    height: 100%;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(135deg, #0d1120 0%, #3a4b8a 43%, #0d1120 100%);
+
     display: flex;
     flex-direction: column;
-    gap: 1 rem;
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 0;
-    // gap: 1rem;
-    li {
-      list-style: none;
+    gap: 1rem;
+    .name {
+      text-align: center;
+      width: 100%;
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 1 rem;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 0;
+      li {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: flex-start;
+        width: 100%;
+        .list-item-title {
+          color: #8731f6;
+          font-weight: 600;
+        }
+        .props {
+          color: #3dc5f9;
+          font-weight: 600;
+          font-style: italic;
+        }
+      }
     }
   }
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-
-  margin: calc(-1 * var(--border-width));
-  border-radius: calc(var(--border-radius) + var(--border-width));
 }
