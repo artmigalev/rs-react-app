@@ -8,7 +8,7 @@ export interface FormSearchProps {
 
 export interface ContainerCardsState {
   loading: boolean;
-  characters: components["schemas"]["CharacterBaseResponse"]["characters"] | [];
+  soundtracks: components["schemas"]["SoundtrackBaseResponse"]["soundtracks"] | [];
   value: string | "";
   pageNumber: number;
   loadMore?: () => void;
