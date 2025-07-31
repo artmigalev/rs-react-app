@@ -1,3 +1,7 @@
+* {
+  --color-text-card: #3dc5f9 --color-description: #8731f6;
+}
+
 .card-bgblue {
   width: 100%;
   background: linear-gradient(135deg, #fffffff5, #3a4b8a, #ffffff98);
@@ -45,5 +49,19 @@
         }
       }
     }
+  }
+}
+ul {
+  padding-left: 0;
+}
+.card-contents {
+  .title {
+    text-align: center;
+    color: #3dc5f9;
+    font-size: 4rem;
+  }
+  .list-title {
+    text-align: center;
+    font-size: 2rem;
   }
 }

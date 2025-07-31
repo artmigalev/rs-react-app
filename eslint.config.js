@@ -6,7 +6,7 @@ import react from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 import reactCompiler from "eslint-plugin-react-compiler";
-import unusedImports from 'eslint-plugin-unused-imports'
+import unusedImports from "eslint-plugin-unused-imports";
 
 export default tseslint.config(
   { ignores: ["dist"] },

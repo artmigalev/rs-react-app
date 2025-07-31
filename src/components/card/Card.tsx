@@ -1,9 +1,9 @@
-import type { components } from "@/types/stapi";
+import type { CardProps } from "@/types/interface";
 import styles from "./Card.module.scss";
 
-const Card = (props: components["schemas"]["SoundtrackBase"]) => {
+const Card = (props: CardProps) => {
   return (
-    <div className={styles["card-bgblue"]}>
+    <div onClick={props.handleClick} className={styles["card-bgblue"]}>
       <div key={props.uid} className={styles["card"]}>
         <ul className={styles["list"]}>
           <li>
