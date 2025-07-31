@@ -9,30 +9,30 @@ import CardFull from "../card/CardFull";
 import getTrack from "@/api/Soundtracks/getTrack";
 import type { components } from "@/types/stapi";
 
-function isSoundtrackFull(data: unknown): data is components["schemas"]["SoundtrackFull"] {
-  if (typeof data !== "object" || data === null) {
-    return false;
-  }
+// function isSoundtrackFull(data: unknown): data is components["schemas"]["SoundtrackFull"] {
+//   if (typeof data !== "object" || data === null) {
+//     return false;
+//   }
 
-  const soundtrack = data as {
-    uid?: unknown;
-    title?: unknown;
-    releaseDate?: unknown;
-    length?: unknown;
-    labels?: unknown;
-    composers?: unknown;
-    contributors?: unknown;
-    orchestrators?: unknown;
-    references?: unknown;
-  };
+//   const soundtrack = data as {
+//     uid?: unknown;
+//     title?: unknown;
+//     releaseDate?: unknown;
+//     length?: unknown;
+//     labels?: unknown;
+//     composers?: unknown;
+//     contributors?: unknown;
+//     orchestrators?: unknown;
+//     references?: unknown;
+//   };
 
-  return (
-    typeof soundtrack.uid === "string" &&
-    typeof soundtrack.title === "string" &&
-    (soundtrack.releaseDate === undefined || typeof soundtrack.releaseDate === "string") &&
-    (soundtrack.length === undefined || typeof soundtrack.length === "number")
-  );
-}
+//   return (
+//     typeof soundtrack.uid === "string" &&
+//     typeof soundtrack.title === "string" &&
+//     (soundtrack.releaseDate === undefined || typeof soundtrack.releaseDate === "string") &&
+//     (soundtrack.length === undefined || typeof soundtrack.length === "number")
+//   );
+// }
 
 function ContainerCards(): React.JSX.Element {
   const [state, setState] = useState<ContainerCardsState>({
@@ -62,6 +62,13 @@ function ContainerCards(): React.JSX.Element {
   };
   const handleClick = (uid: CardProps["uid"]) => {
     getTrack(uid).then((response: components["schemas"]["SoundtrackFull"]) => {
+      if (!response?.uid) {
+        return setState({
+          ...state,
+          loading: false,
+        });
+      }
+
       setState({
         ...state,
 
@@ -86,9 +93,7 @@ function ContainerCards(): React.JSX.Element {
           <Card key={track.uid} {...track} handleClick={() => handleClick(track.uid)} />
         ))}
       </div>
-      {clickedCard.isClick && isSoundtrackFull(clickedCard.data) && (
-        <CardFull {...clickedCard.data} />
-      )}
+      {clickedCard.isClick && <CardFull {...clickedCard.data} />}
     </>
   );
 }
