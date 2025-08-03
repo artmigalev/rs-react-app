@@ -1,13 +1,16 @@
-import SearchContainer from "@components/search-container/SearchContainer";
+import { SearchContainer } from "@components/search-container/SearchContainer";
 import styles from "./index.module.scss";
-import { Component, type ReactNode } from "react";
+import Navigation from "../navigation/Navigation";
+import NavList from "@/utils/list/NavList";
 
-export default class Header extends Component {
-  render(): ReactNode {
-    return (
-      <header className={styles.header}>
-        <SearchContainer />
-      </header>
-    );
-  }
-}
+export const Header = (): React.JSX.Element => {
+  const pages = ["Soundtrack", "About"];
+  return (
+    <header className={styles.header}>
+      <SearchContainer />
+      <Navigation>
+        <NavList items={pages} />
+      </Navigation>
+    </header>
+  );
+};

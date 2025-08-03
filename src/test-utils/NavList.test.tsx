@@ -1,0 +1,31 @@
+import NavList from "@/utils/list/NavList";
+import { screen } from "@testing-library/dom";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+describe("NavList", () => {
+  const headers: string[] = ["soundtracks", "about"];
+  it("should to be in document", () => {
+    render(<NavList items={headers} />);
+    screen.debug();
+    const linkSoundtrack: HTMLElement = screen.getByRole("link", { name: /SOUNDTRACKS/i });
+    const linkAbout: HTMLElement = screen.getByRole("link", { name: /ABOUT/i });
+    const list = screen.getByRole("list");
+    expect(linkAbout && linkSoundtrack).toBeInTheDocument();
+    expect(list).toBeInTheDocument();
+  });
+  it("should to be click", async () => {
+    const user = userEvent.setup();
+    render(<NavList items={headers} />);
+    const linkSoundtrack: HTMLElement = screen.getByRole("link", { name: /SOUNDTRACKS/i });
+    const linkAbout: HTMLElement = screen.getByRole("link", { name: /ABOUT/i });
+
+    screen.debug();
+    await user.click(linkSoundtrack);
+    await user.pointer([
+      { keys: "[MouseLeft>]", target: linkSoundtrack },
+      { keys: "[MouseLeft>]", target: linkAbout },
+    ]);
+    await user.click(linkAbout);
+  });
+});

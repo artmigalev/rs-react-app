@@ -1,53 +1,26 @@
-import type { components } from "@/types/stapi";
-import { Component } from "react";
+import type { CardProps } from "@/types/interface";
 import styles from "./Card.module.scss";
 
-export type CharacterProps = Pick<
-  components["schemas"]["CharacterFull"],
-  | "name"
-  | "hologramActivationDate"
-  | "hologram"
-  | "hologramStatus"
-  | "gender"
-  | "yearOfBirth"
-  | "monthOfBirth"
-  | "dayOfBirth"
-  | "placeOfDeath"
-  | "height"
-  | "weight"
->;
-
-export class Card extends Component<CharacterProps> {
-  render() {
-    const {
-      name,
-      hologramActivationDate,
-      hologram,
-      hologramStatus,
-      gender,
-      yearOfBirth,
-      monthOfBirth,
-      dayOfBirth,
-      placeOfDeath,
-      height,
-      weight,
-    } = this.props;
-    return (
-      <div className={styles["card"]}>
-        <h2 className={styles["name"]}>Character name {name}</h2>
+const Card = (props: CardProps) => {
+  return (
+    <div onClick={props.handleClick} className={styles["card-bgblue"]}>
+      <div key={props.uid} className={styles["card"]}>
         <ul className={styles["list"]}>
-          <li>Gender {gender ?? "Unknown"}</li>
-          <li>Year the character was born {yearOfBirth ?? "Unknown"}</li>
-          <li> Month the character was born {monthOfBirth ?? "Unknown"}</li>
-          <li>Day the character was born {dayOfBirth ?? "Unknown"}</li>
-          <li>Place of birth {placeOfDeath ?? "Unknown"}</li>
-          <li>Height in centimeters {height ?? "Unknown"}</li>
-          <li>Weight in kilograms {weight ?? "Unknown"}</li>
-          <li>Hologram activation date {hologramActivationDate}</li>
-          <li>Hologram status {hologramStatus}</li>
-          <li>Whether this character is a hologram {hologram}</li>
+          <li>
+            <span className={styles["list-item-title"]}>Title:</span>
+            <span className={styles["props"]}>{props.title}</span>
+          </li>
+          <li>
+            <span className={styles["list-item-title"]}>Length:</span>
+            <span className={styles["props"]}>{props.length}</span>
+          </li>
+          <li>
+            <span className={styles["list-item-title"]}>Release date:</span>
+            <span className={styles["props"]}>{props.releaseDate ?? "19.20.1920"}</span>
+          </li>
         </ul>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+export default Card;

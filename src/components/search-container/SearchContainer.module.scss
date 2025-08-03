@@ -1,5 +1,4 @@
 .container {
-  width: 100wv;
   background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
@@ -12,7 +11,7 @@
   box-sizing: border-box;
   border-radius: 16px;
   background-size: 200% 100%;
-  animation: gradient 5s ease infinite;
+  // animation: gradient 5s ease infinite;
   form {
     display: flex;
     flex-direction: row;

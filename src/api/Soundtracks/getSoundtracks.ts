@@ -1,11 +1,11 @@
 import type { components } from "@/types/stapi";
 import axios from "axios";
 
-export default async function getCharacters(
+export default async function getSoundtracks(
   pageNumber: number = 1
-): Promise<components["schemas"]["CharacterBaseResponse"]> {
+): Promise<components["schemas"]["SoundtrackBaseResponse"]> {
   try {
-    const response = await axios.get("https://stapi.co/api/v1/rest/character/search", {
+    const response = await axios.get("https://stapi.co/api/v1/rest/soundtrack/search", {
       params: {
         pageNumber: pageNumber,
         pageSize: 10,

@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🚀 Starting pre-commit checks..."
+
+# Запуск тестов с правильными параметрами
+echo "Running tests..."
+npm test -- --run || {
+  echo "❌ Tests failed! Please fix the test errors before committing."
+  exit 1
+}
+echo "✅ All pre-commit checks passed successfully!"

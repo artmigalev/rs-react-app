@@ -8,6 +8,8 @@ describe("App", () => {
     screen.debug();
 
     const element = screen.getByText(/search/i);
+
     expect(element).toBeInTheDocument();
+    expect(element).toHaveAttribute("type", "submit");
   });
 });

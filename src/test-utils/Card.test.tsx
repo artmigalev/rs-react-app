@@ -1,40 +1,40 @@
-import { Card, type CharacterProps } from "@/components/card/Card";
+import Card from "@/components/card/Card";
+import type { components } from "@/types/stapi";
 import { render, screen } from "@testing-library/react";
 import { it } from "vitest";
 
 describe("Card", () => {
-  const mockCharacter: CharacterProps = {
-    name: "",
-    hologramActivationDate: "",
-    hologram: true,
-    hologramStatus: "",
-    gender: "F",
-    yearOfBirth: 1,
-    monthOfBirth: 1,
-    dayOfBirth: 1,
-    placeOfDeath: "",
-    height: 1,
-    weight: 1,
+  const mockTrack: components["schemas"]["SoundtrackBase"] = {
+    uid: "mockUid",
+    title: "mockTitle",
+    length: 1234,
+    releaseDate: "19.20.1920",
   };
-  it("should props must be", () => {
-    expect(mockCharacter).toBeInstanceOf(Object);
-    expect(mockCharacter).toHaveProperty("name");
-    expect(mockCharacter).toHaveProperty("gender");
-    expect(mockCharacter).toHaveProperty("hologram");
+  it("should props to Cards", () => {
+    expect(mockTrack).toHaveProperty("title");
+    expect(mockTrack).toHaveProperty("length");
+    expect(mockTrack).toHaveProperty("releaseDate");
+    expect(mockTrack).toHaveProperty("uid");
   });
+
   it("should be in the document", () => {
-    render(<Card {...mockCharacter} />);
+    render(<Card {...mockTrack} />);
     screen.debug();
 
     const list = screen.getByRole("list");
-    const title = screen.getByRole("heading", { name: "Character name" });
-    const text = screen.getByText(/character name/i);
-    const listItems = screen.getAllByRole("listitem");
 
-    expect(list).toBeInTheDocument();
-    expect(listItems).toHaveLength(Object.keys(mockCharacter).length - 1);
-    expect(text).toBeInTheDocument();
+    const title = screen.getByText(/Title:/i);
+
+    const length = screen.getByText(/Length:/i);
+    const releaseDate = screen.getByText(/Release date:/i);
+
+    const listItems = screen.getByRole("list");
+
     expect(title).toBeInTheDocument();
+    expect(list).toBeInTheDocument();
+    expect(length).toBeInTheDocument();
+    expect(releaseDate).toBeInTheDocument();
+    expect(listItems.childElementCount).toBe(Object.keys(mockTrack).length - 1);
 
     expect(list.className.includes("list")).toBe(true);
   });
