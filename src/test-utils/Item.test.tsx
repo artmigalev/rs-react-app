@@ -10,4 +10,9 @@ describe("Item", () => {
     const item: HTMLElement = screen.getByRole("link", { name: /ITEM-PROPS/i });
     expect(item).toBeInTheDocument();
   });
+  it("should type props to string", () => {
+    expect(itemProps.length).not.toBeNaN();
+    expect(itemProps.length).not.toBeNull();
+    expect(typeof itemProps).toBe("string");
+  });
 });
